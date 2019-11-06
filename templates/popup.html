@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+Admin - Home
+</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/static/images/zysod.ico">
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css">
+    <link rel="stylesheet" href="/static/css/bulma.css">
+    <link rel="stylesheet" href="/static/css/bulma-badge.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/toastr.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/roboto.css">
+    
+    <script src="/static/js/jquery.js"></script>
+    
+</head>
+
+<body>   
+
+    
+<div class="page-centralize">
+    <div class="v-margin">
+        <p class="title centralize" style="font-size: 1.5rem;">Hello, <span style="color: brown;">Egbeola </span>. Where To?</p>
+    </div>
+    <div class="container centralize">
+        <a href="/us/dashboard/staff" class="button is-link is-large button-link">Dashboard</a>
+        <a href="/us/staff" class="button is-link is-large button-link">Sites</a>
+        <a href="/us/tickets" class="button is-link is-large button-link">Tickets</a>
+        
+    </div>
+    <hr />
+    <div class="centralize">
+        <span><a href="/auth/logout">Logout</a></span>
+    </div>
+</div>
+
+    
+<script>
+    const mode_flag = '{{ mode|safe }}'
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/toastr.min.css">
+    <title>List of Sites {{ mode }}</title>
+{% endblock %}
+
+{% block body %}
+
+    
+<div class="sites-main">
+    <nav class="level" style="margin-bottom: 0.9rem;">
+    <div class=" level-left">
+        <nav class="breadcrumb v-margin is-centered" aria-label="breadcrumbs">
+            <ul>
+                <li><a href="/us/" aria-current="page">Home</a></li>
+                <li class="is-active"><a href="/us/sites" aria-current="page">Dashboard</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="level-right">
+        <div class="buttons has-addons is-centered">
+            <span id="map-button" class="button is-link" style="width: 120px">
+                <span class="icon">
+                    <i class="fa fa-map-marker"></i>
+                </span>
+                <span>
+                    Map View
+                </span>
+            </span>
+            <span id="list-button" class="button" style="width: 120px">
+                <span class="icon">
+                    <i class="fa fa-list-ol"></i>
+                </span>
+                <span>
+                    List View
+                </span>
+            </span>
+        </div>
+    </div>    
+    </nav>
+    <div id="status">
+            <div id="operators" class="hero mt-2 mb-2">
+                <nav class="level">
+                    <div class="level-item has-text-centered">
+                        <div><p class="is-4 param-head is-uppercase">Total Sites</p>
+                            <p class="title" id="total_sites">--</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div><p class="is-4 param-head is-uppercase">Active Sites</p>
+                            <p class="title" id="active_sites">--</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="is-4 param-head is-uppercase">Subscribers Terminations</p>
+                            <p class="title" id="total_subscriber">--</p>
+                        </div>
+                    </div>
+                    <div class="level-item has-text-centered">
+                        <div>
+                            <p class="is-4 param-head is-uppercase">Availability</p>
+                            <p class="title" id="total_availability">--</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+    </div>
+   
+   <!-- html codes for operators or staff enters here
+
+    -->
+    
+    <div id="map-card" class="card mt-3">
+        <div class="card-header">
+            <p class="card-header-title">
+                Map View
+            </p>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                <div id="map-view" style="z-index: 1; height: 550px; width: 100%"></div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;" id="list-card" class="card">
+        <div class="card-header">
+            <p class="card-header-title">
+                List View
+            </p>
+        </div>
+       
+        
+        <div class="card-content">
+            <div class="content">
+                <div id="list-view" style="height: 550px; overflow: auto; width: 100%">
+                    <table class="table is-stripped is-hoverable">
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Name</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Deployment Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="site_list">
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+
+{% block end %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/axios.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/leaflet.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/leaflet.markercluster-src.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/toastr.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/leaflet-search.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ url_for('static', filename='js/lib/nav.obf.js') }}"></script> -->
+<script type="text/javascript" src="{{ url_for('static', filename='js/map.js') }}"></script>
+{% endblock %}

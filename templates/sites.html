@@ -1,0 +1,415 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+   
+    <title>Sites </title>
+{% endblock %}
+
+{% block body %}
+
+
+
+<body>
+  
+<div style="position: absolute; top: 50px; padding: 15px; width: 100%;">
+  <nav class="level" style="margin-bottom: 0.9rem;">
+    <div class="level-left">
+      <nav class="breadcrumb v-margin is-centered" aria-label="breadcrumbs">
+        <ul>
+          
+          <li><a href="/us/">Home</a></li>
+          <li><a href="/us/sites">Sites</a></li>
+          
+          <li class="is-active" style="text-transform: capitalize;"><a href="#">{{ site }}</a></li>
+        </ul>
+      </nav>
+    </div>
+    <span id="david-name" data-site_name="tejuosho"></span>
+    <div class="level-right">
+      <div class="centralize">
+        <div class="centralize">
+          <span style="font-weight: bold;">Status: </span>
+          <span id="lstatus_tejuosho">
+            <div class="site-status"></div><span style="color: lime"> Running</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <nav class="level">      
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="is-4 param-head is-uppercase">DC Module Voltage</p>
+          <p class="title"><span class="red-param" id="dc-voltage">23.8</span>&nbsp;<span
+              class="param-unit">V</span></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="is-4  param-head is-uppercase">Site Availability</p>
+          <p class="title"><span class="green-param" id="availability">99</span>&nbsp;<span class="param-unit">%</span>
+          </p>
+        </div>
+      </div>
+      
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="is-4  param-head is-uppercase">Total Voice Subscriber Terminations</p>
+          <p class="title"><span class="red-param" id="subs">--</span></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+          <div>
+            <p class="is-4  param-head is-uppercase">Total Data Subscriber Terminations</p>
+            <p class="title"><span class="red-param" id="subs">--</span></p>
+          </div>
+        </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="is-4   param-head is-uppercase">Total Call Minutes</p>
+          <p class="title"><span class="red-param" id="call-mins">--</span></p>
+        </div>
+      </div>
+      
+      
+      
+    </nav>
+  </div>
+  <hr>  
+  <div class="hero">
+    <nav class="level">
+        <div class=" level-item has-text-centered">
+            <div>
+              <p class="is-4  param-head is-uppercase">Site Temperature</p>
+              <p class="title"><span class="green-param" id="temp">
+                  28.0</span>&nbsp;<span class="param-unit">°C</span>
+              </p>
+            </div>
+          </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="is-4  param-head is-uppercase">GSM Downlink Input Power</p>
+          <p class="title"><span class="red-param" id="gsm-dl">-48.6</span>&nbsp;<span
+              class="param-unit">dBm</span></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class=" is-4  param-head is-uppercase">DCS Downlink Input Power</p>
+          <p class="title"><span class="red-param" id="dcs-dl">-53.7</span>&nbsp;<span
+              class="param-unit">dBm</span></p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="is-4  param-head is-uppercase">WCDMA Downlink Input Power</p>
+          <p class="title"><span class="red-param" id="wcdma-dl">-51.5</span>&nbsp;<span
+              class="param-unit">dBm</span></p>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+  <hr>
+  
+  <div class="card">
+    <header class="card-header bordered-card centralize">     
+      <div id="netrange" style="background: #e0def3; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+          <i class="fa fa-calendar"></i>&nbsp; 
+          <span class="sl-1"></span> <i class="fa fa-caret-down"></i>
+      </div>
+    </header>
+    <div class="card-content">
+      <div class="content">
+        <div class="columns">
+          <!-- VOICE TRAFFIC CHART -->
+          <div class="column">
+            <div class="card">
+              <header class="card-header bordered-card">
+                <p class="card-header-title param-head">
+                  Voice Traffic
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <div class="chart-head">
+                      
+                    <div id="voicechart" class="chart-main"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- DATA TRAFFIC -->
+          <div class="column">
+            <div class="columns">
+              <div class="column">
+                <div class="card">
+                  <header class="card-header bordered-card">
+                    <p class="card-header-title param-head">
+                      Data Traffic</p>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      <div class="chart-head">
+                        <div id="datachart" class="chart-main"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of columns -->
+        <div class="columns">  
+          <!-- AVAILABILITY CHART  -->
+            <div class="column">
+              <div class="card">
+                <header class="card-header bordered-card">
+                  <p class="card-header-title param-head">
+                   Availability
+                  </p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <div class="chart-head">
+                        
+                      <div id="availableChart" class="chart-main"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
+             <!-- NETWORK UTILIZATION  -->
+            <div class="column">
+              <div class="columns">
+                <div class="column">
+                  <div class="card">
+                    <header class="card-header bordered-card">
+                      <p class="card-header-title param-head">
+                        Network Utilization                          
+                          </p>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        <div class="chart-head">
+                          <div id="netchart" class="chart-main"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns">          
+              <div class="column">
+                <div class="card">
+                  <header class="card-header bordered-card">
+                    <p class="card-header-title param-head">
+                     Successful Subscriber Terminations
+                    </p>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      <div class="chart-head">
+                          
+                        <div id="terminationChart" class="chart-main"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="column">
+                <div class="columns">
+                  <div class="column">
+                    <div class="card">
+                      <header class="card-header bordered-card">
+                        <p class="card-header-title param-head">
+                          Transactions
+                            
+                            </p>
+                      </header>
+                      <div class="card-content">
+                        <div class="content">
+                          <div class="chart-head">
+                            <div id="transactionChart" class="chart-main"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="hero mt-2">
+    <nav class="level">
+      <div class="level-left">
+          <div class="level-item has-text-left">
+              <p class="is-size-4 param-head">CHARGE CONTROLLER STATUS</p>
+            </div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero mt-2">
+      <nav class="level">
+        
+       
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="is-4 param-head is-uppercase">Battery Voltage</p>
+            <p class="title"><span class="red-param" id="bat-voltage">12</span>&nbsp;<span class="param-unit">V</span>
+            </p>
+          </div>
+        </div>
+        
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="is-4 param-head is-uppercase">Total Power Generated</p>
+            <p class="title"><span class="red-param" id="power-gen">--</span>&nbsp;<span class="param-unit">kW</span>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+            <div>
+              <p class="is-4 param-head is-uppercase">Total Power Consumed</p>
+              <p class="title"><span class="red-param" id="power-consumed">--</span>&nbsp;<span class="param-unit">kW</span>
+            </div>
+          </div>
+        
+        <div class=" level-item has-text-centered">
+          <div>
+            <p class="is-4 param-head is-uppercase">Battery Temperature</p>
+            <p class="title"><span class="green-param" id="temp">
+                28.0</span>&nbsp;<span class="param-unit">°C</span>
+            </p>
+          </div>
+        </div>
+        
+      </nav>
+    </div>
+    <hr>
+    
+    <div class="hero">
+      <nav class="level">
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="is-4 param-head is-uppercase">Controller Efficiency</p>
+            <p class="title"><span class="red-param">--</span>&nbsp;<span
+                class="param-unit">%</span></p>
+          </div>
+        </div>
+        <div class="level-item has-text-centered">
+          <div>
+            <p class="is-4 param-head is-uppercase">Last Recorded Fault</p>
+            <p class="title"><span class="red-param is-size-4">29/9/2019</span>
+          </div>
+        </div>
+        <!-- <div class="level-item has-text-centered">
+          <div>
+            <p class="heading param-head"></p>
+            <p class="title"><span class="red-param" id="wcdma-dl">-51.5</span>&nbsp;<span
+                class="param-unit">dBm</span></p>
+          </div>
+        </div> -->
+      </nav>
+    </div>
+    
+    <hr>
+    <div class="card">
+        <header class="card-header bordered-card centralize">
+          
+          <div id="netrange" style="background: #e0def3; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+              <i class="fa fa-calendar"></i>&nbsp; 
+              <span class="sl-1"></span> <i class="fa fa-caret-down"></i>
+          </div>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <div class="columns ">
+              
+              <div class="column is-one-third h-100">
+                <div class="card">
+                  <header class="card-header bordered-card">
+                    <p class="card-header-title param-head">
+                      Energy Balance Today
+                    </p>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                       <div>
+                          <nav class="level">
+                              <div class="level-item has-text-centered">
+                                <div>
+                                  <p class="heading param-head">Power Produced</p>
+                                  <p class=""><i class="fa fa-arrow-up green-param" aria-hidden="true"></i><span class="green-param" id="">1.5</span>&nbsp;<span
+                                      class="param-unit">kW</span></p>
+                                </div>
+                              </div>
+                              <div class="level-item has-text-centered">
+                                  <div>
+                                    <p class="heading param-head">Power Consumed</p>
+                                    <p class=""><i class="fa fa-arrow-down red-param" aria-hidden="true"></i><span class="red-param" id="">1.3</span>&nbsp;<span
+                                        class="param-unit">kW</span></p>
+                                  </div>
+                                </div>
+                          </nav>
+                         
+                         </div> 
+                            
+                      <div class="chart-head">
+                        <div id="todaychart" class="chart-main"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="column h-100 ">
+                <div class="columns">
+                  <div class="column ">
+                    <div class="card">
+                      <header class="card-header bordered-card">
+                        <p class="card-header-title param-head">
+                          Energy Log
+                        </p>
+                        
+                      </header>
+                      <div class="card-content">
+                        <div class="content">
+                          <div class="chart-head">
+                            <div id="energychart" class="chart-main"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+  
+</div>
+{% endblock %}
+
+{% block end %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/highcharts.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/exporting.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/lib/drilldown.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/sites.js') }}"></script>
+{% endblock %}

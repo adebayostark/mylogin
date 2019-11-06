@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="/static/img/zysod.ico">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/bulma.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/bulma-badge.min.css') }}" rel="stylesheet">        
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery.js') }}"></script>
+        <title>Zysod - Network Operations and Control</title>       
+        
+    </head>
+    <body>
+            <div class="page-centralize">
+                    <div class="auth">
+                        <div class="" style="padding: 10px 60px ;">
+                            <img src="/static/img/logo.png" alt="Logo">
+                        </div>
+                        <p class="subtitle centralize">Hello! Confirm you are a staff.</p>
+                        <div>
+                            <div style="margin: 18px 0px;"></div>
+                            <form method="POST">
+                                
+                                <div class="field">
+                                    <label class="label"><label for="email">Email Address</label></label>
+                                    <div class="control has-icons-right">
+                                        <input class="input" id="email" name="email" placeholder="youremail@zysod.net" required type="email" value="">
+                                       
+                                        
+                                    </div>
+                                    
+                                    <div style="margin-top: 30px;"></div>
+                                </div>
+                                <div class="field">
+                                    <label class="label"><label for="password">Password</label></label>
+                                    <div class="control has-icons-right">
+                                        <input class="input" id="password" name="password" placeholder="Your password" required type="password" value="">
+                                                                             
+                                    </div>
+                                    
+                                </div>
+                                <div class="field" style="margin-top: 35px;">
+                                    <div class="control centralize">
+                                        <button class="button is-link submit-button">Affiliate</button>
+                                        
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+        </body>
+</html>
+    

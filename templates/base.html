@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" href="/static/img/zysod.ico">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/bulma.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/bulma-badge.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+        <link rel="stylesheet" type="text/css"  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css"  href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/animate.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/toastr.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/roboto.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/lib/jquery.js') }}"></script>
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/lib/socket.io.min.js') }}"></script> -->
+        
+        {% block title %}{% endblock %}
+    </head>
+<body>
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation"
+            style="border-bottom-color:#e2e2e2; border-bottom-style: solid; border-bottom-width: 1px">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://zysod.net">
+                    <img src="/static/img/logo.png" alt="Logo">
+                </a>
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    
+                    <a href="/us/home" class="navbar-item is-tab">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <span>
+                            Home
+                        </span>
+                    </a>
+                    <a href="/us/staff" class="navbar-item is-tab">
+                        <span class="icon">
+                            <i class="fa fa-globe"></i>
+                        </span>
+                        <span>
+                            Sites
+                        </span>
+                    </a>
+                    <a href="/us/tickets" class="navbar-item is-tab">
+                        <span class="icon">
+                            <i class="fa fa-ticket"></i>
+                        </span>
+                        <span>
+                            Tickets
+                        </span>
+                    </a>
+                    
+                    
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class=" navbar-link is-arrowless">
+                            
+                            <span id='newN' class="icon has-badge-danger has-badge-rounded">
+                                <i class="fa fa-bell"></i>
+                            </span>
+                            
+                        </a>
+                        <div class="navbar-dropdown is-right">
+                            <ul style="width: 350px; max-height:500px; overflow-y:auto;" id="notificationList">
+                                
+                                <li id="emptyN">
+                                    <div class="navbar-item">✨You are all caught up!✨</div>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Staff
+                        </a>
+                        <div class="navbar-dropdown is-right">
+                            <!-- <hr class="navbar-divider"> -->
+                            <a href="/auth/logout" class="navbar-item">
+                                <span>Log Out</span>
+                                <span class="icon">
+                                    <i class="fa fa-sign-out"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% block body %}{% endblock %}
+        {% block end %}{% endblock %}       
+
+<script type="text/javascript">
+    $(document)['ready'](function(){$('.navbar-burger')['click'](function(){$('.navbar-burger')['toggleClass']('is-active');$('.navbar-menu')['toggleClass']('is-active');});});
+    let tabs=document['querySelectorAll']('.is-tab');   
+</script>
+
+    </body>
+</html>
