@@ -22,13 +22,19 @@
                         <p class="subtitle centralize">Hello! Confirm you are a staff.</p>
                         <div>
                             <div style="margin: 18px 0px;"></div>
-                            <form method="POST">
-                                
+                            <form method="POST" action="/us/authwall">
+                                {{ form.hidden_tag() }}
                                 <div class="field">
                                     <label class="label"><label for="email">Email Address</label></label>
                                     <div class="control has-icons-right">
-                                        <input class="input" id="email" name="email" placeholder="youremail@zysod.net" required type="email" value="">
-                                       
+                                        {{ form.email(class="input",placeholder="youremail@zysod.net" )}}
+                                        <!-- <input class="input" id="email" name="email" placeholder="youremail@zysod.net" required type="email" value=""> -->
+                                            
+                                        {% if form.email.errors %}
+                                        {% for error in form.email.errors %}
+                                        <p class="help is-danger">{{ error }}</p>
+                                        {% endfor %}
+                                        {% endif %}  
                                         
                                     </div>
                                     
@@ -37,15 +43,20 @@
                                 <div class="field">
                                     <label class="label"><label for="password">Password</label></label>
                                     <div class="control has-icons-right">
-                                        <input class="input" id="password" name="password" placeholder="Your password" required type="password" value="">
-                                                                             
+                                            {{ form.password(class="input",placeholder="Your Password" )}}
+                                        <!-- <input class="input" id="password" name="password" placeholder="Your password" required type="password" value=""> -->
+                                        {% if form.password.errors %}
+                                        {% for error in form.password.errors %}
+                                        <p class="help is-danger">{{ error }}</p>
+                                        {% endfor %}
+                                        {% endif %}  
                                     </div>
                                     
                                 </div>
                                 <div class="field" style="margin-top: 35px;">
                                     <div class="control centralize">
-                                        <button class="button is-link submit-button">Affiliate</button>
-                                        
+                                        <!-- <button class="button is-link submit-button">Affiliate</button> -->
+                                        {{ form.submit(class="button is-link submit-button")}}
                                     </div>
                                 </div>
                             </form>

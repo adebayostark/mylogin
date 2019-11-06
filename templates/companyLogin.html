@@ -23,20 +23,26 @@
                 <div>
                     <div style="margin: 40px;"></div>
                   
-                    <form method="POST" action="">                        
+                    <form method="POST" action="/">  
+                        {{ form.hidden_tag() }}                      
                          <div class="field">
                             <label class="label">Company ID</label>
                             <div class="control has-icons-right">
-                              
-                                <input class="input" id="company_id" maxlength="8" name="company_id" placeholder="8-digit company ID" required type="text" value=""> 
-                               
-                                
-                            </div>
+                                {{ form.companyID(class="input", placeholder="8-digit company ID",maxlength="8") }}     
+                                {% if form.companyID.errors %}
+                                {% for error in form.companyID.errors %}
+                                <p class="help is-danger">{{ error }}</p>
+                                {% endfor %}
+                                {% endif %}                         
+                                <!-- <input class="input" id="company_id" maxlength="8" name="company_id" placeholder="8-digit company ID" required type="text" value="">  -->
+                              </div>
+
                             
                         </div>
                         <div class="field" style="margin-top: 35px;">
                             <div class="control centralize">
-                                <button class="button is-link submit-button"  id="submit" type="submit">Affiliate</button>
+                                <!-- <button class="button is-link submit-button"  id="submit" type="submit">Affiliate</button> -->
+                                {{ form.submit(class="button is-link submit-button")}}
                                 
                                 
                             </div>
